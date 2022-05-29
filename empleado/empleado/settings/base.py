@@ -1,10 +1,9 @@
-"""
-"""
-
+#---------------------------------------LIBRERIAS---------------------------------------------
+#Configuracion de paths con Unipath
 from pathlib import Path
+#---------------------------------------------------------------------------------------------
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-
 #-----------path configurado con unipath
 from unipath import Path
 BASE_DIR = Path(__file__).ancestor(3)
@@ -16,10 +15,10 @@ BASE_DIR = Path(__file__).ancestor(3)
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'u5h4i@k8zl$24!dhx)=22c)ue@5y%$pg)hpr&@#*wt6rcjx0)f'
 
-
+#---------------------------------------APLICACIONES---------------------------------------------
 # Application definition
-
 INSTALLED_APPS = [
+    #Aplicaciones por default
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -27,13 +26,17 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    #Apps de terceros
+    "ckeditor",
 
     #local apps
     "applications.departamento",
     "applications.persona",
     "applications.home",
 ]
+#---------------------------------------------------------------------------------------------
 
+#---------------------------------------MIDDLEWARE--------------------------------------------
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -43,13 +46,20 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+#---------------------------------------------------------------------------------------------
 
+#---------------------------------------URL-CONFIG--------------------------------------------
+#Url principal
 ROOT_URLCONF = 'empleado.urls'
+#---------------------------------------------------------------------------------------------
 
+#---------------------------------------TEMPLATES--------------------------------------------
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR.child("templates")],#para que reconozca la carpeta template en la estructura instalar unipath
+        #para que reconozca la carpeta template en la estructura instalar unipath
+        # Ubicacion de los templates "child("templates")],"
+        'DIRS': [BASE_DIR.child("templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -61,13 +71,17 @@ TEMPLATES = [
         },
     },
 ]
+#---------------------------------------------------------------------------------------------
 
+#------------------------------------------WSGI_APP--------------------------------------------
 WSGI_APPLICATION = 'empleado.wsgi.application'
 
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
+#---------------------------------------------------------------------------------------------
 
+#------------------------------------------WSGI_APP--------------------------------------------
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -82,8 +96,9 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+#---------------------------------------------------------------------------------------------
 
-
+#------------------------------------------IDIOMA--------------------------------------------
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
@@ -96,4 +111,4 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
+#---------------------------------------------------------------------------------------------

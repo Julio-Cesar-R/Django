@@ -13,19 +13,22 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-
+#---------------------------------------LIBRERIAS---------------------------------------------
+#Libreria para el administrador
 from django.contrib import admin
-
+#Path conexion
 from django.urls import path,re_path, include
-
+#----------------------------------------------------------------------------------------------
 
     
-
+#--------------------------------------------URLS----------------------------------------------
+#URLS correspondientes a la carpeta applications
 urlpatterns = [
+    #Ruta del django admin
     path('admin/', admin.site.urls),
     #Incluimmos las urls de las apps de departamento
     re_path("",include("applications.departamento.urls")),
     re_path("",include("applications.persona.urls")),
     re_path("",include("applications.home.urls")),
-   
 ]
+#----------------------------------------------------------------------------------------------
