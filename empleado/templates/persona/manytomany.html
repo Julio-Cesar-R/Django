@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Many to many</title>
+</head>
+<body>
+    <h1> Lista de muchos a muchos</h1>
+
+    <!---Formulario que hara una peticion Get a la base -->
+    <form  method="GET">
+        <!--Comunicacion segura(Oculta la informacion en la url)-->
+        <!--{% csrf_token %}-->
+        <!--Caja de texto-->
+        <input type= "text"id="id_empleado" name="id_empleado" placeholder="Ingresa el nombre">
+        <!--Boton-->
+        <button type="submit">Buscar</button>
+
+    </form>
+<!-------------------------------------------------------------------------------------------------->
+    <h3>Lista de resultados</h3>
+    <!--"empleados es el objeto de tipo context_object_name declarado en la vista generica"-->
+    
+    {% for e in habilidades %}
+        <li>{{e}}</li>  
+    {% endfor %}
+</body>
+</html>
