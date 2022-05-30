@@ -35,6 +35,7 @@ class Empleado(models.Model):
     
     first_name = models.CharField("Nombres", max_length=50)
     last_name = models.CharField("Apellidos", max_length=50)
+    full_name = models.CharField("Nombre completo", max_length=120,blank=True)
     #Hace referencia a la lista de opciones JOB_CHOICES
     job = models.CharField("Trabajo", max_length=50,choices=JOB_CHOICES)
     #llAVE FORANEA
