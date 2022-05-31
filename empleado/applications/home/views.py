@@ -30,10 +30,17 @@ class ListapruebaListView(ListView):
     model = Prueba
     context_object_name= "lista"
 
-
-
+#----------------------Vista
+#Importamos el form desde forms.py
+from .forms import PruebaForm
+#Vista com con model form
 class PruebaCreateView(CreateView):
+    #Modelo
     model = Prueba
+    #Template
     template_name = "home/pruebacreate.html"
-    fields= ["titulo","subtitulo", "cantidad"]
+    #Informacion que se enviara al html
+    form_class=PruebaForm
+    #redirecciona a la pagina de inicio
+    success_url="/"
 

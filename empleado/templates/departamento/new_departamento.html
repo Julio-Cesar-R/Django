@@ -4,19 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title> New Departamento</title>
 </head>
 <body>
-    <h1>Prueba Create</h1>
-
+    <h1>Este apartado pertenece a DEPARTAMENTOS</h1>
     <form method="POST">
         {% csrf_token %}
-        {{form.as_p}}
+        <h3>Datos empleados</h3>
+        <p>{{form.nombre}}</p>
+        <p>{{form.apellidos}}</p>
 
+        <h3>Otros datos</h3>
+        
+        <p>{{form.departamento}}</p>
+        <p>{{form.shortname}}</p>
+        
+        
         <button type="submit">Agregar</button>
 
     </form>
-    
     
 </body>
 </html>

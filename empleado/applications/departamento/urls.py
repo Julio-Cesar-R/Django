@@ -5,6 +5,10 @@ from django.urls import path
 
 from .  import views
 urlpatterns = [
-    path("departamento/",views.Departamentoview.as_view()),
+    path(
+        "new_departamento/",
+        views.NewDepartamentoView.as_view(),
+        name="add_departamento"
+        ),
    
 ]
