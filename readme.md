@@ -8,6 +8,15 @@ Librerias
 Modificar administrador Django
 -pip install django-ckeditor (Documentacion: https://django-ckeditor.readthedocs.io/en/latest/)
 
+Archivos estaticos
+-Css
+-JavaScript
+-Foundation (Documentacion: https://get.foundation/)
+
+Documentacion sobre vistas genericas
+-(Doc: https://ccbv.co.uk/)
+
 Widgets
 -djaneiro
 -python
+-ClassiCube Script
