@@ -13,6 +13,9 @@ Archivos estaticos
 -JavaScript
 -Foundation (Documentacion: https://get.foundation/)
 
+Documentacion sobre vistas genericas
+-(Doc: https://ccbv.co.uk/)
+
 Widgets
 -djaneiro
 -python
