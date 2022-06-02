@@ -19,4 +19,4 @@ Documentacion sobre vistas genericas
 Widgets
 -djaneiro
 -python
--ClassiCube Script
+-ClassiCube Script (CSS)
