@@ -14,6 +14,9 @@ from .models import Prueba
 class Pruebaview(TemplateView):
     template_name= "home/prueba.html"
 
+class Resumenfoundationview(TemplateView):
+    template_name= "home/resumenfoundation.html"
+
 
 class PruebaListView(ListView):
     #Sustituye la base

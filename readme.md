@@ -11,7 +11,7 @@ Modificar administrador Django
 Archivos estaticos
 -Css
 -JavaScript
--Foundation (Documentacion: https://get.foundation/)
+-Foundation (Documentacion: https://get.foundation/) Descargar Rar
 
 Documentacion sobre vistas genericas
 -(Doc: https://ccbv.co.uk/)
