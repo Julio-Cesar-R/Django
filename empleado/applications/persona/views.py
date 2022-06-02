@@ -191,3 +191,14 @@ class EmpleadoDeleteView(DeleteView):
     model = Empleado
     template_name = "persona/deletepersona.html"
     success_url=reverse_lazy("persona_app:correcto")
+
+
+#------------------------------------------------------------------------------------------------
+#---------------------------------------VISTA INICIO---------------------------------------------
+
+class InicioView(TemplateView):
+    '''
+    Esta vista carga la pantalla de inicio
+    '''  
+    template_name = "inicio.html"
+

@@ -49,6 +49,12 @@ urlpatterns = [
         views.EmpleadoDeleteView.as_view(),
         name="delete_empleado"
         ),
+    #Url que carga la pagina principal
+    path(
+        '',
+        views.InicioView.as_view(),
+        name='home'
+    ),
 
 ]
 #----------------------------------------------------------------------------------------------
