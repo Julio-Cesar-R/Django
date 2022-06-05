@@ -1,18 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update</title>
-</head>
-<body>
-    <h1>Actualizar empleados</h1>
-    <form method="POST">
-        {% csrf_token %}
-        {{form.as_p}}<!--Buscar documentacion-->
-        <button type="submit">Actualizar</button>
+{% extends 'base.html' %}
 
-    </form>
-</body>
-</html>
+{% block titulo %}
+    Actualizar empleados
+{% endblock titulo %}
+
+
+{% block headers %}
+{% include 'includes/headers.html' %} 
+{% endblock headers %}
+    
+    
+
+{% block content %}
+<div class="grid-container">
+<div class="grid-x">
+    <h1 class="cell">
+        Actualizar empleados
+    </h1>
+
+    <div class="cell">
+        <form class="grid-x grid-margin-x" method="POST" enctype="multipart/form-data">{% csrf_token %}
+            <div class="cell large-6">
+                <label>Nombre
+                    {{form.first_name}}
+                </label>
+            </div>
+            <div class="cell large-6">
+                <label>Apellido
+                    {{form.last_name}}
+                </label>
+            </div>
+            <div class="cell large-6">
+                <label>Trabajo
+                    {{form.job}}
+                </label>
+            </div>
+            <div class="cell large-6">
+                <label>Departamento
+                    {{form.departamento}}
+                </label>
+            </div>
+            <div class="cell large-6">
+                <label>Imagen
+                    {{form.image}}
+                </label>
+            </div>
+            <div class="cell large-6">
+                <label>Habilidades
+                    {{form.habilidades}}
+                </label>
+            </div>
+            <div class="cell large-6">
+                <label>Hoja de vida
+                    {{form.hoja_vida}}
+                </label>
+            </div>
+            <div class="cell large-6">
+                <button class="button success" type="submit" >Actualizar</button>
+                
+              </div>
+
+            
+            
+            
+        
+        </form>
+    </div>
+</div>
+</div>
+
+
+{% endblock content %}
+    
+    

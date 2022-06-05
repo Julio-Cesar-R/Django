@@ -7,6 +7,7 @@
 # Create your views here.
 #Form view
 from django.views.generic.edit import FormView
+from django.views.generic import ListView
 
 
 from .forms import NewDepartamentoForm
@@ -15,6 +16,15 @@ from applications.persona.models import Empleado
 from .models import Departamento
 
 
+class DepartamentoListView(ListView):
+    model = Departamento
+    template_name = "departamento/dep_list_view.html"
+    context_object_name="departamentos"
+
+
+
+
+#-------------------------------------------------------------------------------------------------
 class NewDepartamentoView(FormView):
     template_name="departamento/new_departamento.html"
     form_class=NewDepartamentoForm

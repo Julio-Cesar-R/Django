@@ -1,28 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> New Departamento</title>
-</head>
-<body>
-    <h1>Este apartado pertenece a DEPARTAMENTOS</h1>
-    <form method="POST">
-        {% csrf_token %}
-        <h3>Datos empleados</h3>
-        <p>{{form.nombre}}</p>
-        <p>{{form.apellidos}}</p>
+{% extends 'base.html' %}
 
-        <h3>Otros datos</h3>
-        
-        <p>{{form.departamento}}</p>
-        <p>{{form.shortname}}</p>
-        
-        
-        <button type="submit">Agregar</button>
+{% block titulo %}
+    Nuevo departamento
+{% endblock titulo %}
 
-    </form>
+
+{% block headers %}
+{% include 'includes/headers.html' %} 
+{% endblock headers %}
     
-</body>
-</html>
+    
+
+{% block content %}
+
+<form method="POST">
+    {% csrf_token %}
+    <div class="grid-container">
+        <div class="grid-x">
+            <div class="cell">
+                <h1>Agregar departamento</h1>
+            </div>
+            <div class="cell">
+                <h3>Datos empleados</h3>
+                
+                <p> Nombre:{{form.nombre}}</p>
+                <p>Apellido:{{form.apellidos}}</p>
+            </div>
+            <div class="cell">
+                <h3>Datos del departamento</h3>
+                <p>Nombre dep:{{form.departamento}}</p>
+                <p>Dep nombre corto:{{form.shortname}}</p>
+            </div>
+            <div class="cell">
+                <button class="button success" type="submit" >Guardar</button>
+
+            </div>
+        </div>
+    </div>
+        
+</form>
+
+    
+{% endblock content %}
+    
+    

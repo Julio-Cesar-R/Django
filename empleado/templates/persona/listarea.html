@@ -1,18 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=Lista por area, initial-scale=1.0">
-    <title>Area</title>
-</head>
-<body>
-    <h1>Lista  filtrada por area</h1>
-    <!--"object_list" es el objeto que almacena por dafault la
-    informacion que proviene del archivo views.py-->
-    {% for e in object_list %}
-        <li>{{e}}</li>
-        
-    {% endfor %}
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block titulo %}
+    Empleados por area
+{% endblock titulo %}
+
+
+{% block headers %}
+{% include 'includes/headers.html' %} 
+{% endblock headers %}
+    
+    
+
+{% block content %}
+<div class="grid-container ">
+    <div class="grid-x">
+        <h1 class="cell">Lista de empleados</h1>
+
+
+        <div class="cell">
+            <table>
+                <thead>
+                  <tr>
+                    <th width="100">ID</th>
+                    <th width="100">Nombres</th>
+                    <th width="100">Apellidos</th>
+                    <th width="100">Departamento</th>
+                    <th width="100">Accion</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for e in empleado_area %}
+                  <tr>
+                    <td>{{e.id}}</td>
+                    <td>{{e.first_name}}</td>
+                    <td>{{e.last_name}}</td>
+                    <td>{{e.departamento}}</td>
+                    <td><a class="button success" href="{% url 'persona_app:detail_empleado' e.id %}">Ver</a></td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            <!--Fin listar empleados-->
+
+        </div>
+
+
+
+    
+{% endblock content %}
+    
+    

@@ -20,14 +20,17 @@ urlpatterns = [
         name="correcto"
         ),
     #Urls y el nombre las vistas
-    path("lista_todo_empleado/",views.Listallempleados.as_view()),
+    path('admin_empleado/',views.Lista_admin.as_view(), name='administrador'),
+
+    path("lista_todo_empleado/",views.Listallempleados.as_view(),name="empleados_all"),
     path("lista_by_key/",views.Listaempleadokey.as_view()),
     path("many_to_many/",views.Listamanytomany.as_view()),   
     #Url/variable que recibe la informacion en la url
-    path("lista_by_area/<area>",views.Listarea.as_view()),
+    path("lista_by_area/<area>",views.Listarea.as_view(),name="area_empleados"),
     path("lista_by_job/<trabajo>",views.Listatrabajo.as_view()),
+    
     #Url de una vista de detalle (detail view)
-    path("detail_view_empleado/<pk>",views.EmpleadoDetailView.as_view()),
+    path("detail_view_empleado/<pk>",views.EmpleadoDetailView.as_view(),name="detail_empleado"),
     
     
     #Url de una vista Create

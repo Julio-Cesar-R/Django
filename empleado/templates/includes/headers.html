@@ -11,21 +11,23 @@
         <ul class="dropdown menu" data-dropdown-menu>
         <li class="menu-text">Empleados</li>
         <li class="has-submenu">
-            <a href="#0">Listar</a>
+            <a href="{% url 'persona_app:empleados_all' %}">Listar</a>
 <!--       <ul class="submenu menu vertical" data-submenu>
             <li><a href="#0">Listar</a></li>
             <li><a href="#0"></a></li>
             <li><a href="#0">Three</a></li>
             </ul>-->
         </li>
-        <li><a href="#0">Departamentos</a></li>
-        <li><a href="#0">Administrar</a></li>
+        <li><a href="{% url 'departamento_app:lista_departamento' %}">Departamentos</a></li>
+        <li><a href="{% url 'departamento_app:add_departamento' %}">Agregar Departamento</a></li>
+        <li><a href="{% url 'persona_app:administrador' %}">Administrar</a></li>
         </ul>
     </div>
     <div class="top-bar-right">
         <ul class="menu">
         <li><input type="search" placeholder="Buscar empleado"></li>
-        <li><button type="button" class="button">Buscar</button></li>
+        <li><a href="{% url 'persona_app:create_empleado' %}" class="button" type="button" >Registrar nuevo empleado</a></li>
+        
         </ul>
     </div>
     </div>

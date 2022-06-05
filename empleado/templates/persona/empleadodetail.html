@@ -1,21 +1,66 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail view</title>
-</head>
-<body>
-    <h1>Vista detalle de los empleados  {{titulo}}</h1>
-    {{object}}
-    <h3>Todos los datos</h3>
-    <p>{{object.first_name}}</p>
-    <p>{{object.last_name}}</p>
-    <p>{{object.first_name}}</p>
-    <p>{{object.job}}</p>
-    <p>{{object.departamento}}</p>
-    <p>{{object.habilidades}}</p>
-    <p>{{object.hoja_vida}}</p>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block titulo %}
+    Detalle empleados
+{% endblock titulo %}
+
+
+{% block headers %}
+{% include 'includes/headers.html' %} 
+
+{% endblock headers %}
+    
+    
+
+{% block content %}
+<div  class="grid-container aling-center"></div>
+    <div class="grid-x grid-margin-x align-center">
+        <div class="cell large-3  card" style="width: 300px; margin-top: 10px;">
+            <div class="card-divider align-center">
+                <h4>Datos del empleado {{object.id }}</h4>
+                
+            </div>
+            <div class="card-divider align-center">
+                
+                {{empleado.first_name}} {{empleado.last_name}}
+            </div>
+            {% if empleado.image %}
+                <img src="{{empleado.image.url}}">   
+            {% else %}
+                <img src="{% static 'img/fail.jpg' %}">  
+            {% endif %}
+                    
+        <div class="card-section">
+
+            <p>Trabajo:{{object.get_job_display}}</p>
+            <p>Departamento:{{object.departamento.shortname}}</p>
+            <p><span class="label">habilidades</span></p>
+            <ul class="vertical menu">
+                
+                {% for h in object.habilidades.all %}
+                    <li>{{h.habilidad}}</li>
+                    
+                {% endfor %}
+                    
+            </ul>  
+            <div class="cell">
+                {{object.hoja_vida}}
+            </div>
+            
+            
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+
+   
+    
+  
+
+    {% endblock content %}

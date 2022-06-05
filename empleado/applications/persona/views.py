@@ -1,12 +1,28 @@
 #---------------------------------------LIBRERIAS---------------------------------------------
 #BASE DE DATOS EMPLEADO
+import imp
 import django
 from .models import Empleado
 # Create your views here.
+#IMPORTAR FORMS
+from .forms import EmpleadoForm
 #IMPORTA VISTAS GENERICAS
 from django.views.generic import ListView,DetailView,CreateView,TemplateView,UpdateView,DeleteView
 #Importa redireccionamiento de urls
 from django.urls import reverse_lazy
+#----------------------------------------------------------------------------------------------
+#---------------------------------------VISTA 0------------------------------------------------
+#Vista que enlista todos los empleados de la tabla empleados (CRUD)
+class Lista_admin(ListView):
+    #Template donde se pintara la informacion
+    template_name= "persona/administradorempleados.html"
+    paginate_by=5
+    #Ordenar
+    ordering="id"
+    model=Empleado
+    context_object_name="admin_empleados"
+
+
 #----------------------------------------------------------------------------------------------
 
 #---------------------------------------VISTA 1------------------------------------------------
@@ -16,13 +32,21 @@ class Listallempleados(ListView):
     template_name= "persona/listall.html"
     #Paginacion 
     #Agregar en la url /?page=1 y mostrara la informacion de esa pagina
-    paginate_by=1
+    paginate_by=5
     #Ordenar
-    ordering="first_name"
+    ordering="id"
     #informacion de la base empleado que se mostrara
-    model=Empleado
+    #model=Empleado
     #Variable que se debe pintar en el archivo html
     #context_object_name= "lista_empleados"
+    def get_queryset(self):
+      
+        #Obtiene la informacion del formulario con metodo Get
+        palabra_clave=self.request.GET.get("kword", "")
+
+        #Compara la informacion recibida en el input con la de la base
+        lista=Empleado.objects.filter(full_name__icontains=palabra_clave)
+        return lista
 #----------------------------------------------------------------------------------------------
     
 
@@ -32,6 +56,7 @@ class Listallempleados(ListView):
 class Listarea(ListView):
     #Template donde se pintara la informacion
     template_name= "persona/listarea.html"
+    context_object_name="empleado_area"
     
     #Funcion que recibe informacion mediante la URL
     def get_queryset(self):
@@ -39,7 +64,7 @@ class Listarea(ListView):
         #Recibe un parametro mediante una url
         area=self.kwargs["area"]
         #Compara la informacion recibida en la url con la de la base
-        lista=Empleado.objects.filter(departamento__name=area)
+        lista=Empleado.objects.filter(departamento__shortname=area)
         return lista
 #----------------------------------------------------------------------------------------------
 
@@ -101,7 +126,7 @@ class EmpleadoDetailView(DetailView):
 
     def get_context_data(self, **kwargs) :
         context=super(EmpleadoDetailView,self).get_context_data(**kwargs)
-        context["titulo"]="Empleado del mes"
+        #context["titulo"]="Empleado del mes"
         return context
 #----------------------------------------------------------------------------------------------
 
@@ -118,8 +143,9 @@ class EmpleadoCreateView(CreateView):
     model = Empleado
     #Template
     template_name = "persona/crearempleado.html"
+    form_class= EmpleadoForm
     #Campos
-    fields=["first_name","last_name","job","departamento","departamento","image","habilidades","hoja_vida"]
+    #fields=["first_name","last_name","job","departamento","departamento","image","habilidades","hoja_vida"]
     #fields=("__all__")
 #------------------------------------------------------------------------------------------
  #REDIRECCIONAMIENTO NO RECOMENDADO   
@@ -130,7 +156,7 @@ class EmpleadoCreateView(CreateView):
 #REDIRECCIONAMIENTO CON DJANGO 
 # libreria reverse_lazy
 #   persona_app (etiqueta de las urls) correcto (name de la url)   
-    success_url=reverse_lazy("persona_app:correcto")
+    success_url=reverse_lazy("persona_app:administrador")
 
     def form_valid(self, form):
         '''
@@ -153,7 +179,7 @@ class EmpleadoUpdateView(UpdateView):
     model = Empleado
     template_name = "persona/empleadoupdate.html"
     fields=["first_name","last_name","job","departamento","departamento","image","habilidades","hoja_vida"]
-    success_url=reverse_lazy("persona_app:correcto")
+    success_url=reverse_lazy("persona_app:administrador")
 
     '''
     def post(self, request, *args, **kwargs):
@@ -190,7 +216,7 @@ class EmpleadoUpdateView(UpdateView):
 class EmpleadoDeleteView(DeleteView):
     model = Empleado
     template_name = "persona/deletepersona.html"
-    success_url=reverse_lazy("persona_app:correcto")
+    success_url=reverse_lazy("persona_app:administrador")
 
 
 #------------------------------------------------------------------------------------------------

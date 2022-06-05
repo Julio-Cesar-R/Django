@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+    Lista de departamentos
+{% endblock titulo %}
+
+
+{% block headers %}
+{% include 'includes/headers.html' %} 
+{% endblock headers %}
+    
+    
+
+{% block content %}
+<div class="grid-container">
+    <div  class="grid-x">
+        <h1 class="cell">Hola mundo</h1>
+        <div class="cell">
+            <table>
+                <tbody>
+                    {% for dep in departamentos %}
+                    <tr>
+                        <td>{{dep.name}}</td>
+                        <td>{{dep.shortname}}</td>
+                        <td><a class="button success" href="{% url 'persona_app:area_empleados' dep.shortname %}">Ver empleados</a></td>
+                        
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+ 
+{% endblock content %}
+    

@@ -1,21 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delete empleado</title>
-</head>
-<body>
-    <h1>Eliminar empleado</h1>
-    <form method="POST">
-        {% csrf_token %}
-        
-        <p>Confirme que desea eliminar este usuario</p>
-        <button type="submit">Eliminar</button>
+{% extends 'base.html' %}
 
-    </form>
+{% block titulo %}
+    Eliminar empleado
+{% endblock titulo %}
+
+
+{% block headers %}
+{% include 'includes/headers.html' %} 
+{% endblock headers %}
     
     
-</body>
-</html>
+
+{% block content %}
+   <div class="grid-container">
+       <div class="grid-x">
+           <h1 class="cell">
+            Eliminar empleado
+           </h1>
+           <div class="cell">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="callout alert">
+                    <h5>Confirme que desea eliminar al empleado {{object.first_name}}</h5>
+                  </div>
+                
+                <button class="button alert" type="submit" >Eliminar</button>
+                
+        
+            </form>
+            
+           </div>
+           
+       </div>
+   </div> 
+{% endblock content %}
+
+
+    

@@ -27,3 +27,6 @@ DATABASES = {
 STATIC_URL = '/static/'
 STATICFILES_DIRS=[BASE_DIR.child("static")]
 #----------------------------------------------------------------------------------------------
+#Archivos multimedia (Carpeta media)
+media_url="/media/"
+MEDIA_ROOT=BASE_DIR.child("media")
