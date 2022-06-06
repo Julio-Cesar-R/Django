@@ -29,4 +29,6 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     re_path("",include("app.app1.urls")),
+    re_path("",include("app.home.urls")),
+    
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  #Imagenes multimedia cargarla 

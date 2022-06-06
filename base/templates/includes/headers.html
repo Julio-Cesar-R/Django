@@ -9,24 +9,24 @@
     <div class="top-bar" id="responsive-menu">
     <div class="top-bar-left">
         <ul class="dropdown menu" data-dropdown-menu>
-        <li class="menu-text">Empleados</li>
+        <li class="menu-text" ><a href="{% url 'home_app:inicio' %}">Inicio</a></li>
         <li class="has-submenu">
-            <a href="{% url 'app1_app:create_demostracion' %}">Listar</a>
+            <a href="{% url 'app1_app:create_demostracion' %}">Demostracion</a>
 <!--       <ul class="submenu menu vertical" data-submenu>
             <li><a href="#0">Listar</a></li>
             <li><a href="#0"></a></li>
             <li><a href="#0">Three</a></li>
             </ul>-->
         </li>
-        <li><a href="{% url 'app1_app:create_demostracion' %}">Departamentos</a></li>
-        <li><a href="{% url 'app1_app:create_demostracion' %}">Agregar Departamento</a></li>
-        <li><a href="{% url 'app1_app:create_demostracion' %}">Administrar</a></li>
+        <li><a href="{% url 'app1_app:create_demostracion' %}">Demostracion</a></li>
+        <li><a href="{% url 'app1_app:create_demostracion' %}">Demostracion</a></li>
+        <li><a href="{% url 'app1_app:create_demostracion' %}">Demostracion</a></li>
         </ul>
     </div>
     <div class="top-bar-right">
         <ul class="menu">
         <li><input type="search" placeholder="Buscar empleado"></li>
-        <li><a href="{% url 'app1_app:create_demostracion' %}" class="button" type="button" >Registrar nuevo empleado</a></li>
+        <li><a href="{% url 'app1_app:create_demostracion' %}" class="button" type="button" >Demostracion</a></li>
         
         </ul>
     </div>

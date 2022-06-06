@@ -1,7 +1,5 @@
 #---------------------------------------LIBRERIAS---------------------------------------------
-#BASE DE DATOS EMPLEADO
-import imp
-import django
+#BASE DE DATOS Demostracion
 from .models import Demostracion
 # Create your views here.
 #IMPORTAR FORMS
