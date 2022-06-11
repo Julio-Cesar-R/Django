@@ -3,7 +3,7 @@ from tkinter import Widget
 from django import forms
 from .models import Empleado
 
-class EmpleadoForm(forms.ModelForm):
+class PersonForm(forms.ModelForm):
     """Form definition for Empleado."""
 
     class Meta:

@@ -1,0 +1,10 @@
+<form method="POST">
+    {% csrf_token %}
+    <div class="callout alert">
+        <h5>Confirme que desea eliminar al empleado {{object.full_name}}</h5>
+      </div>
+    
+    <button class="button alert" type="submit" >Eliminar</button>
+    
+
+</form>

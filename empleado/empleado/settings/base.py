@@ -28,6 +28,7 @@ INSTALLED_APPS = [
 
     #Apps de terceros
     "ckeditor",
+    "rest_framework",
 
     #local apps
     "applications.departamento",

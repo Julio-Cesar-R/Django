@@ -1,5 +1,6 @@
 Librerias
 -django
+-djangorestframework
 -unipath
 -postgreslq
 -psycopg2 (conexion a psql mysql)

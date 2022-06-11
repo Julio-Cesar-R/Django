@@ -1,5 +1,6 @@
 from .base import *
 # SECURITY WARNING: don't run with debug turned on in production!
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 DEBUG = True
 
 ALLOWED_HOSTS = []

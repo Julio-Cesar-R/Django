@@ -23,6 +23,11 @@ urlpatterns = [
     path('admin_empleado/',views.Lista_admin.as_view(), name='administrador'),
 
     path("lista_todo_empleado/",views.Listallempleados.as_view(),name="empleados_all"),
+    path('api_lista_todo_empleado/', views.EmpleadolistAPIview.as_view(), name='api_all_empleados'),
+
+
+
+
     path("lista_by_key/",views.Listaempleadokey.as_view()),
     path("many_to_many/",views.Listamanytomany.as_view()),   
     #Url/variable que recibe la informacion en la url

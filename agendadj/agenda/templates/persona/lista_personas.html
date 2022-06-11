@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% load  static %}
+
+{% block content %}
+<h2>Lista de personas</h2>
+{% for persona in personas  %}
+<li>{{persona.full_name}}</li>
+<li>{{persona.job}}</li>
+<li>{{persona.email}}</li>
+<li>{{persona.phone}}</li>  
+<p></p>  
+{% endfor %}
+    
+{% endblock content %}
+
+{% block css %}
+{% endblock css %}
+
+{% block js %}
+<!-- ========== importando vue y axios [ASI ES MALA PRACTICA]========== -->
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<!-- ==========seccion codigo vuejs========== -->
+<script src="{% static 'apps/search.js' %}"></script>
+<!-- ==========Fin seccion codigo vuejs========== -->
+{% endblock js %}

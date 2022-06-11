@@ -1,13 +1,15 @@
 #---------------------------------------LIBRERIAS---------------------------------------------
 #BASE DE DATOS EMPLEADO
+
 import imp
-import django
 from .models import Empleado
 # Create your views here.
 #IMPORTAR FORMS
 from .forms import EmpleadoForm
 #IMPORTA VISTAS GENERICAS
 from django.views.generic import ListView,DetailView,CreateView,TemplateView,UpdateView,DeleteView
+#VISTAS PARA APIS
+from rest_framework.generics import ListAPIView
 #Importa redireccionamiento de urls
 from django.urls import reverse_lazy
 #----------------------------------------------------------------------------------------------
@@ -21,6 +23,8 @@ class Lista_admin(ListView):
     ordering="id"
     model=Empleado
     context_object_name="admin_empleados"
+
+
 
 
 #----------------------------------------------------------------------------------------------
@@ -47,6 +51,16 @@ class Listallempleados(ListView):
         #Compara la informacion recibida en el input con la de la base
         lista=Empleado.objects.filter(full_name__icontains=palabra_clave)
         return lista
+
+#API
+from .serializers import EmpleadoSerializer
+class EmpleadolistAPIview(ListAPIView):
+    #formato json
+    serializer_class=EmpleadoSerializer
+    def get_queryset(self):
+        
+        return Empleado.objects.all()
+    #serializar
 #----------------------------------------------------------------------------------------------
     
 

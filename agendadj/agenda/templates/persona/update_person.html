@@ -1,0 +1,15 @@
+<h1>Actualizar personas</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    {{form.full_name.label}} {{form.full_name}}
+    <p></p>
+    {{form.job.label}} {{form.job}}
+    <p></p>
+    {{form.email.label}} {{form.email}}
+    <p></p>
+    {{form.phone.label}} {{form.phone}}
+    <p></p>
+    <button class="button success" type="submit">Actualizar</button>
+
+</form>
