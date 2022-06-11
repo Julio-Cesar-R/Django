@@ -6,7 +6,7 @@ from .models import Person
 
 #---------------------------------------------------------------------------
 #----------------------------LIST VIEW PERSONAS------------------------
-from .serializers import PersonSerializer
+from .serializers import MethodSerializer, PersonSerializer
 class PersonaListView(ListView):
     template_name = "persona/lista_personas.html"
     context_object_name="personas"
@@ -147,3 +147,39 @@ class PersonlistAPIserializer3(ListAPIView):
     def get_queryset(self):
         
         return Person.objects.order_by("id")
+#--------------------------------------------------------------------
+#SERIALIZER CON METHODO
+class Reunionmethod(ListAPIView):
+    #formato json
+    serializer_class=MethodSerializer
+    def get_queryset(self):
+        return Reunion.objects.order_by("id")
+
+#-------------------------------------------
+#Hyperlink redireccionamiento de apis
+from .serializers import ReunionSerializerlink
+class ReunionApilink(ListAPIView):
+    #formato json
+    serializer_class=ReunionSerializerlink
+    def get_queryset(self):
+        return Reunion.objects.order_by("id")
+
+#Paginacion
+from .serializers import PersonSerializer2,PersonPagination
+class PersonlistAPIpaginacion(ListAPIView):
+    #formato json
+    serializer_class=PersonSerializer2
+    pagination_class=PersonPagination
+    def get_queryset(self):
+        
+        return Person.objects.all()
+    #serializar
+
+
+#reunion by jobs (METODOS desde manager.py)
+from .serializers import ReunionesJobSerializer
+class Reunionbypersonjob(ListAPIView):
+    serializer_class=ReunionesJobSerializer
+    def get_queryset(self):
+        
+        return Reunion.objects.cantidad_reuniones_job()

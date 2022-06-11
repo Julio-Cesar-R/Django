@@ -1,5 +1,7 @@
 
-from rest_framework import serializers
+from rest_framework import serializers,pagination
+
+
 
 from .models import Person,Reunion
 
@@ -7,12 +9,7 @@ class PersonSerializer(serializers.ModelSerializer):
     class Meta:
         model=Person
         fields=("__all__")
-        '''("id",
-        "full_name",
-        "job",
-        "phone",
-        "email"
-        )'''
+       
 #------------------------------------------------------------------------------
 #Serializer.Serializer
 class PersonaSerializer(serializers.Serializer):
@@ -32,6 +29,9 @@ class PersonaSerializer2(serializers.ModelSerializer):
         model=Person
         fields=("__all__")
 #---------------------------------------------------------------------
+
+
+#---------------------MANY TO MANY Y FOREING KEY
 #----------------------------------------------------------
 from .models import Hobby
 class HobbySerializer(serializers.ModelSerializer):
@@ -62,3 +62,48 @@ class ReunionSerializer(serializers.ModelSerializer):
         'asunto',
         'persona',)
 #------------------------------------------------------------
+#SERIALIZER CON METODO
+class MethodSerializer(serializers.ModelSerializer):
+    hora_fecha=serializers.SerializerMethodField()
+    
+    class Meta:
+        model=Reunion
+        fields=('id',
+        'fecha',
+        'hora',
+        'asunto',
+        'persona',
+        'hora_fecha')
+    
+    def get_hora_fecha(self,obj):
+        return str(obj.hora)+"-"+str(obj.fecha)
+
+#-----Hyperlink serializer
+class ReunionSerializerlink(serializers.HyperlinkedModelSerializer):
+    
+    class Meta:
+        model=Reunion
+        fields=('id',
+        'fecha',
+        'hora',
+        'asunto',
+        'persona',)
+        extra_kwargs={
+            'persona':{'view_name': 'persona_app:api_pk_empleados', 'lookup_field':'pk'}
+        }
+#---------------------------------------------------------------------------
+#Paginacion
+class PersonSerializer2(serializers.ModelSerializer):
+    class Meta:
+        model=Person
+        fields=("__all__")
+
+class PersonPagination(pagination.PageNumberPagination):
+    page_size=5
+    max_page_size=100
+#------------------------------------------------------------------
+#Metodos en manager
+class ReunionesJobSerializer(serializers.Serializer):
+    persona__job = serializers.CharField()
+    cantidad = serializers.IntegerField()
+

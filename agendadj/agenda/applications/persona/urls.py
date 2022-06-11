@@ -39,4 +39,21 @@ urlpatterns = [
     #Serializadores Many to many y foreing key
     path('api_reunion/', views.ReunionApi.as_view(), name='api_reunion'),
     path('api_personas_serializer3/', views.PersonlistAPIserializer3 .as_view(), name='api_serializer_list_persona3'),
+
+    #Serializador con metodo
+    path('reuinion_method/', views.Reunionmethod.as_view(), name='reunion_metodo'),
+    
+    #Redireccionamiento entre apis
+    path('reunion_hyperlink/', views.ReunionApilink.as_view(), name='reunion_hyperlink'),
+
+    #Paginacion
+    path('persona_paginada/', views.PersonlistAPIpaginacion.as_view(), name='persona_paginada'),
+
+    #Metodos desde manage.py
+    path('Reunion_Personas_job/', views.Reunionbypersonjob.as_view(), name='reuinion_job'),
+
+
+
+
+  
 ]
