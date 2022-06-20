@@ -9,7 +9,7 @@ class AutorManager(models.Manager):
     def buscar_autor(self, kword):
 
         resultado = self.filter(
-            nombre__icontains=kword
+            Q(nombres__icontains=kword)
         )
 
         return resultado
@@ -17,7 +17,7 @@ class AutorManager(models.Manager):
     def buscar_autor2(self, kword):
 
         resultado = self.filter(
-            Q(nombre__icontains=kword) | Q(apellidos__icontains=kword)
+            Q(nombres__icontains=kword) | Q(apellidos__icontains=kword)
         )
 
         return resultado
@@ -25,7 +25,7 @@ class AutorManager(models.Manager):
     def buscar_autor3(self, kword):
 
         resultado = self.filter(
-            nombre__icontains=kword
+            nombres__icontains=kword
         ).exclude(
             Q(edad__icontains=35) | Q(edad__icontains=65)
         )
@@ -38,7 +38,7 @@ class AutorManager(models.Manager):
         resultado = self.filter(
             edad__gt=40,
             edad__lt=65
-        ).order_by('apellidos', 'nombre', 'id')
+        ).order_by('apellidos', 'nombres', 'id')
 
         return resultado
     

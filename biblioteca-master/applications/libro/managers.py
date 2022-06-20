@@ -10,12 +10,15 @@ class LibroManager(models.Manager):
     """ managers para el modelo autor """
 
     def listar_libros(self, kword):
-
+        '''
+        1-Lista los libros que coincidan con la "kword"
+        2-Que se encuentren en un rango de fechas determinado por "fecha__range"
+        '''
         resultado = self.filter(
             titulo__icontains=kword,
-            fecha__range=('2000-01-01', '2010-01-01')
+            fecha__range=('2000-01-01', '2030-01-01')
         )
-
+        
         return resultado
     
     def listar_libros_trg(self, kword):
@@ -29,12 +32,21 @@ class LibroManager(models.Manager):
             return self.all()[:10]
 
     
-    def listar_libros2(self, kword, fecah1, fecha2):
+    def listar_libros2(self, kword, fecha1, fecha2):
+        '''
+        Funcion que recibe 3 parametros
+        kword : Titulo del libro
+        fecha1: Rango de fecha inicial
+        fecha2: Rango de fecha limite
 
-        date1 = datetime.datetime.strptime(fecah1, "%Y-%m-%d").date()
+        return: -Coincidencia de nombres
+                -Coincidencia entre rango de fechas
+        '''
+        #Se le da un foormato de fecha a los parametros recibidos en el formulario
+        date1 = datetime.datetime.strptime(fecha1, "%Y-%m-%d").date()
         date2 = datetime.datetime.strptime(fecha2, "%Y-%m-%d").date()
-
-
+        
+        #Consulta a la base de datos
         resultado = self.filter(
             titulo__icontains=kword,
             fecha__range=(date1, date2)

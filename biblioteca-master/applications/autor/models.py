@@ -10,7 +10,7 @@ class Persona(models.Model):
     apellidos = models.CharField(
         max_length=50
     )
-    nacionaldiad = models.CharField(
+    nacionalidad = models.CharField(
         max_length=20
     )
     edad = models.PositiveIntegerField()
