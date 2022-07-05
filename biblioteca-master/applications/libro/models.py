@@ -25,6 +25,7 @@ class Libro(models.Model):
     categoria = models.ForeignKey(
         Categoria, 
         on_delete=models.CASCADE,
+        #Referencia de la relacion Libro y categoria
         related_name='categoria_libro'
     )
     autores = models.ManyToManyField(Autor)

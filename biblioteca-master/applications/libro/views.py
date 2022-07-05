@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 
 # mdols local
-from .models import Libro
+from .models import Libro,Categoria
 
 
 class ListLibros(ListView):
@@ -46,12 +46,18 @@ class ListLibrosTrg(ListView):
 
 
 class ListLibros2(ListView):
+    '''
+    Esta vista muestra la informacion de libros 
+    filtrados por categoria
+    '''
     context_object_name = 'lista_libros'
     template_name = 'libro/lista2.html'
 
     def get_queryset(self):
-        
-        return Libro.objects.listar_libros_categoria('1')
+        palabra_clave = self.request.GET.get("kword", '')
+        return Libro.objects.listar_libros_categoria(palabra_clave)
+
+
 
 
 

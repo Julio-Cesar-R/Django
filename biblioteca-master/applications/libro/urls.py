@@ -19,6 +19,9 @@ urlpatterns = [
         views.ListLibrosTrg.as_view(), 
         name="libros-trg"
     ),
+
+
+
     path(
         'libro-detalle/<pk>/', 
         views.LibroDetailView.as_view(), 

@@ -15,7 +15,7 @@
 
 <p>------agregar autores-----</p>
 
-<form method="POST">
+<form method="POST">{% csrf_token %}
     <input type="text" placeholder="agregar autor">
-    <button type="submit">Guardfa</button>
+    <button type="submit">Guardar</button>
 </form>
