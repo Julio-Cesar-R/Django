@@ -6,20 +6,19 @@ from .base import *
 #--------------------------------CONFIGURACION/BASE DE DATOS-----------------------------------
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 ALLOWED_HOSTS = []
 #---------------------------------------BASE DE DATOS-------------------------------------------
+
+
 DATABASES = {
     'default': {
-        #Conexion a base de datos en postgresql con psycopg2
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': "dbempleado",
-        'USER': "kaiser",
-        'PASSWORD': "admin",
-        'HOST': "localhost",
-        'PORT': "5432",
-        
-        
+        'NAME': get_secret('DB_NAME'),
+        'USER': get_secret('USER'),
+        'PASSWORD': get_secret('PASSWORD'),
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 

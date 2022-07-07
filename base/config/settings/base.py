@@ -1,23 +1,31 @@
 #---------------------------------------LIBRERIAS---------------------------------------------
 #Configuracion de paths con Unipath
-from pathlib import Path
+
 #---------------------------------------------------------------------------------------------
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 #-----------path configurado con unipath
+from django.core.exceptions import ImproperlyConfigured
+import json
+
 from unipath import Path
 BASE_DIR = Path(__file__).ancestor(3)
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
+with open("secret.json") as f:
+    secret = json.loads(f.read())
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'u5h4i@k8zl$24!dhx)=22c)ue@5y%$pg)hpr&@#*wt6rcjx0)f'
+def get_secret(secret_name, secrets=secret):
+    try:
+        return secrets[secret_name]
+    except:
+        msg = "la variable %s no existe" % secret_name
+        raise ImproperlyConfigured(msg)
 
+SECRET_KEY = get_secret('SECRET_KEY')
 #---------------------------------------APLICACIONES---------------------------------------------
 # Application definition
-INSTALLED_APPS = [
+DJANGO_APPS = (
     #Aplicaciones por default
     'django.contrib.admin',
     'django.contrib.auth',
@@ -25,14 +33,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    #Apps de terceros
-    "ckeditor",
-
-    #local apps
+)
+    
+LOCAL_APPS=(
     "app.app1",
     "app.home",
-]
+)
+THIRD_PARTY_APPS=(
+    "ckeditor",
+    "rest_framework")
+
+INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS
 #---------------------------------------------------------------------------------------------
 
 #---------------------------------------MIDDLEWARE--------------------------------------------

@@ -5,10 +5,11 @@ from .models import Demostracion
 #IMPORTAR FORMS
 from .forms import DemostracionForm
 #IMPORTA VISTAS GENERICAS
-from django.views.generic import ListView,DetailView,CreateView,TemplateView,UpdateView,DeleteView
+from django.views.generic import ListView,DetailView,CreateView,TemplateView,UpdateView,DeleteView,FormView
 #Importa redireccionamiento de urls
 from django.urls import reverse_lazy
 
+#-----------------------VISTAS------------------------------------
 class DemostracionCreateView(CreateView):
     #Modelo
     model = Demostracion
@@ -17,16 +18,18 @@ class DemostracionCreateView(CreateView):
     form_class= DemostracionForm
     #Campos
     #fields=["first_name","last_name","job","departamento","departamento","image","habilidades","hoja_vida"]
-    #fields=("__all__")
-#------------------------------------------------------------------------------------------
- #REDIRECCIONAMIENTO NO RECOMENDADO   
-    #Pagina que rediccionara cuando la vista cumpla su cometido "."= el mismo template
-    #Url no template
-    #success_url= "/success"
-#------------------------------------------------------------------------------------------    
-#REDIRECCIONAMIENTO CON DJANGO 
-# libreria reverse_lazy
-#   persona_app (etiqueta de las urls) correcto (name de la url)   
+    #fields=("__all__") 
     success_url=reverse_lazy("app1_app:create_demostracion")
+#--------------------------------------------------------------------------------------------
+#--------------------------------SERIALIZERS VIEWS----------------------------------
+from rest_framework.generics import ListAPIView,CreateAPIView
+from .serializers import DemostracionSerializer,DemostracionAPIcreate
 
-    
+class DemostracionAPIView(ListAPIView):
+    serializer_class=DemostracionSerializer
+    def get_queryset(self):
+        queryset = Demostracion.objects.filter(dato1="kaiser")
+        return queryset
+
+class DemostracionAPICreatee(CreateAPIView):
+    serializer_class=DemostracionAPIcreate

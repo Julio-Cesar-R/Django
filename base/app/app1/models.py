@@ -24,5 +24,5 @@ class Demostracion(models.Model):
 
     #La funcion __str__ es el mensaje de salida que tendra la tabla Empleado 
     def __str__(self):
-        return str(self.id)+" "+self.dato1+" "+self.dato2
+        return str(self.id)+" "+self.dato1+" "+self.dato2+" "+self.dato3
 #---------------------------------------------------------------------------------------------- 
