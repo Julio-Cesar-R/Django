@@ -3,8 +3,14 @@ import datetime
 from django.db import models
 
 from django.db.models import Q, Count
+#-----------------------------------------------------------------------
+#Similitudes con triagram
+#Ingresa a la base de datos en postgres y ejectu el siguiente comando
+#> CREATE EXTENSION pg_trgm;
+#Crear el index (Nombre del index, nombre de la aplicacion, tabla de la base, Atributo de la tabla)
+#CREATE INDEX libro_titulo_idx ON libro_libro USING GIN(titulo gin_trgm_ops);
 from django.contrib.postgres.search import TrigramSimilarity
-
+#-----------------------------------------------------------------------
 
 class LibroManager(models.Manager):
     """ managers para el modelo autor """
@@ -25,6 +31,7 @@ class LibroManager(models.Manager):
         
         if kword:
             resultado = self.filter(
+                #Mejor que el icontains
                 titulo__trigram_similar=kword,
             )
             return resultado
@@ -93,6 +100,19 @@ class LibroManager(models.Manager):
 
         )
         return resultado
+    def num_lib_prestados(self):
+        '''
+        Funcion que retorna la cantidad de prestamos realizados por libro
+        ////////// No recomendable(Muestra los registros que estan en 0), mejor usar group by
+        '''
+        resultado= self.annotate(
+            num_prestados=Count("Prestamo_libro")
+        )
+        for r in resultado:
+            print(r, r.num_prestados)
+            
+        
+        return resultado
 
 
 class CategoriaManager(models.Manager):
@@ -125,6 +145,8 @@ class CategoriaManager(models.Manager):
             print("************")
             print(r,r.num_libros)
         return resultado
+
+        
 #_---------------------------------------------------------------------------------------
 #Probar consultas sin necesidad de crear las vistas (Shell )
 #Python manage.py shell

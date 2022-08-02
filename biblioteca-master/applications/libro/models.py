@@ -18,7 +18,7 @@ class Categoria(models.Model):
     objects = CategoriaManager()
 
     def __str__(self):
-        return str(self.id) + ' - ' + self.nombre
+        return  self.nombre
 
 
 class Libro(models.Model):
@@ -44,7 +44,7 @@ class Libro(models.Model):
         verbose_name_plural = 'Libros'
 
     def __str__(self):
-        return str(self.id) + '-' + self.titulo
+        return  self.titulo
 
 
 def optimize_image(sender, instance, **kwargs):

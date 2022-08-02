@@ -17,8 +17,9 @@ class AutorManager(models.Manager):
     def buscar_autor2(self, kword):
 
         resultado = self.filter(
-            Q(nombres__icontains=kword) | Q(apellidos__icontains=kword)
+            Q(nombres__icontains=kword) | Q(apellidos__icontains=kword)| Q(id__contains=kword)
         )
+
 
         return resultado
     

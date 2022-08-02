@@ -19,7 +19,7 @@ class Persona(models.Model):
         abstract = True
     
     def __str__(self):
-        return str(self.id) + '-' + self.nombres + '-' + self.apellidos
+        return self.nombres + ' ' + self.apellidos
 
 
 

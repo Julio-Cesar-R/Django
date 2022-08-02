@@ -13,5 +13,13 @@
     {% for a in lista_autores  %}
         <li>{{ a.nombres }} -  {{a.apellidos}} - {{a.nacionalidad}}</li>
     {% endfor %}
+
+    
+    {% if lista_autores %}
+        <p>Lista de resultados</p>
+    {% else %}
+        <p>No se encontro ningun resultado</p>
+    {% endif %}
+        
         
 </ul>

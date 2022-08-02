@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #triagram con postgres
     'django.contrib.postgres',
     #
     'applications.autor',

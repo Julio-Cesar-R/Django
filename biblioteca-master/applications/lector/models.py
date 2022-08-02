@@ -12,7 +12,9 @@ from applications.libro.models import Libro
 from .managers import PrestamoManager
 from .signals import update_libro_stok
 
+
 class Lector(Persona):
+    #Clase que hereda los campos del modelo persona
     
     class Meta:
         verbose_name = 'Lector'
@@ -22,7 +24,8 @@ class Lector(Persona):
 class Prestamo(models.Model):
     lector = models.ForeignKey(
         Lector,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        related_name="Prestamo_lector"
     )
     libro = models.ForeignKey(
         Libro, 

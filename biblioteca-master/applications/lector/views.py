@@ -4,11 +4,24 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 
 from django.views.generic.edit import FormView
+from django.views.generic import ListView
 
 # local apps
 from .models import Prestamo, Lector
 # forms
 from .forms import PrestamoForm, MultiplePrestamoForm
+
+
+
+class PrestamoListView(ListView):
+    
+    context_object_name="prestamo"
+    template_name = "lector/prestamos_all.html"
+    succes_url="."
+    def get_queryset(self):
+        consulta=Prestamo.objects.buscar_todo()
+        return consulta
+
 
 class RegistrarPrestamo(FormView):
     template_name = "lector/add_prestamo.html"
