@@ -15,6 +15,7 @@ urlpatterns = [
     #Urls Template view (pagina comun) 
     path('persona_lista/', views.PersonaListView.as_view(), name='persona_lista'),
     path('api_persona_lista/', views.PersonlistAPIview.as_view(), name='api_lista_personas'),
+    
 
 
     path("lista_by_pk/<pk>",views.PersonapkListView.as_view(),name="pk_empleados"),

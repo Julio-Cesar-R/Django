@@ -14,6 +14,7 @@ class Hobby(TimeStampedModel):
     class Meta:
         verbose_name = 'Hobby'
         verbose_name_plural = 'Hobbies'
+        ordering=["id"] 
         
     
     def __str__(self):
@@ -47,6 +48,7 @@ class Person(TimeStampedModel):
     class Meta:
         verbose_name = 'Persona'
         verbose_name_plural = 'Personas'
+        ordering=["id"] 
         
     
     def __str__(self):

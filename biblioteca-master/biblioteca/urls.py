@@ -9,4 +9,5 @@ urlpatterns = [
     re_path('', include('applications.autor.urls')),
     re_path('', include('applications.libro.urls')),
     re_path('', include('applications.lector.urls')),
+    #re_path('', include('applications.home.urls')),
 ]
